@@ -1,0 +1,8 @@
+@import "variables";
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  font-family: sans-serif;
+}
