@@ -8,11 +8,17 @@ import { Observable } from 'rxjs';
 export class CountryService {
   private apiUrl = 'https://restcountries.com/v3.1';
 
+  private fields = 'name,flags,population,capital,translations';
+
   constructor(private http: HttpClient) {}
 
   getAllCountries(): Observable<any[]> {
-    const fields = 'name,flags,population,capital';
+    return this.http.get<any[]>(`${this.apiUrl}/all?fields=${this.fields}`);
+  }
 
-    return this.http.get<any[]>(`${this.apiUrl}/all?fields=${fields}`);
+  getCountryByName(name: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.apiUrl}/name/${name}?fields=${this.fields}`
+    );
   }
 }
