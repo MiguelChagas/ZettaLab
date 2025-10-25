@@ -1,0 +1,32 @@
+@use "src/app/variables" as *;
+
+.sidebar-container {
+  background-color: $primary-color;
+  height: 100vh;
+  padding: 1.5rem 1rem;
+}
+
+.sidebar-brand {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.nav-link {
+  color: #ffffff;
+  opacity: 0.8;
+  padding: 0.75rem 1rem;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.active {
+    opacity: 1;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+  }
+}
