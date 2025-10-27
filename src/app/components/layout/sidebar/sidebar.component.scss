@@ -1,9 +1,14 @@
-@use "src/app/variables" as *;
+@use "../../../variables" as *;
 
 .sidebar-container {
   background-color: $primary-color;
   height: 100vh;
   padding: 1.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: inherit;
+  overflow-y: auto;
 }
 
 .sidebar-brand {
