@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { CountryService } from '../../services/country.service';
 
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './country-list.component.html',
   styleUrl: './country-list.component.scss',
 })
@@ -21,7 +22,10 @@ export class CountryListComponent implements OnInit {
     this.countryService.getAllCountries().subscribe({
       next: (data) => {
         console.log('Dados recebidos com sucesso!', data);
-        this.countries = data;
+        const sortedData = data.sort((a, b) =>
+          a.translations.por.common.localeCompare(b.translations.por.common)
+        );
+        this.countries = sortedData;
         this.isLoading = false;
       },
       error: (err) => {

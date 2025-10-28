@@ -1,0 +1,14 @@
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+
+  .card {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

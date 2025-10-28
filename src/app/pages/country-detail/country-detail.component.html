@@ -1,0 +1,56 @@
+<div *ngIf="isLoading" class="text-center">
+  <p>Carregando dados do país...</p>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="country && !isLoading">
+  <div class="text-center mb-4">
+    <img
+      [src]="country.flags.svg"
+      alt="Bandeira"
+      class="img-fluid mb-3"
+      style="width: 150px; border: 1px solid #eee"
+    />
+    <h1>{{ country.translations.por.common }}</h1>
+    <h2 class="h5 text-muted">{{ country.name.official }}</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <strong>Capital:</strong>
+          <span>{{ country.capital ? country.capital[0] : "N/A" }}</span>
+        </li>
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <strong>Região:</strong>
+          <span
+            >{{ country.region
+            }}{{
+              country.subregion ? " (" + country.subregion + ")" : ""
+            }}</span
+          >
+        </li>
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <strong>População:</strong>
+          <span>{{ country.population | number }}</span>
+        </li>
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <strong>Línguas:</strong>
+          <span>{{ getLanguages() }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

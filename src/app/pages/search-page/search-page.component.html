@@ -38,23 +38,28 @@
       *ngFor="let country of countries"
       class="col-12 col-md-6 col-lg-4 mb-4"
     >
-      <div class="card h-100">
-        <img
-          [src]="country.flags.svg"
-          class="card-img-top"
-          [alt]="country.flags.alt"
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ country.translations.por.common }}</h5>
-          <p class="card-text">
-            <strong>População:</strong> {{ country.population | number }}
-          </p>
-          <p class="card-text">
-            <strong>Capital:</strong>
-            {{ country.capital ? country.capital[0] : "N/A" }}
-          </p>
+      <a
+        [routerLink]="['/pais', country.translations.por.common]"
+        class="text-decoration-none"
+      >
+        <div class="card h-100">
+          <img
+            [src]="country.flags.svg"
+            class="card-img-top"
+            [alt]="country.flags.alt"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ country.translations.por.common }}</h5>
+            <p class="card-text">
+              <strong>População:</strong> {{ country.population | number }}
+            </p>
+            <p class="card-text">
+              <strong>Capital:</strong>
+              {{ country.capital ? country.capital[0] : "N/A" }}
+            </p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

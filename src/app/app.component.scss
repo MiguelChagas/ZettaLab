@@ -12,9 +12,9 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - 60px); // altura total menos altura do footer
 }
 
 .card {
   flex: 1;
-  margin-bottom: 2rem;
 }
