@@ -43,7 +43,6 @@ interface Country {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './country-detail.component.html',
-  styleUrl: './country-detail.component.scss',
 })
 export class CountryDetailComponent implements OnInit {
   country: Country | null = null;

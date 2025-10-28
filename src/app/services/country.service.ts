@@ -10,7 +10,7 @@ export class CountryService {
   private apiUrl = 'https://restcountries.com/v3.1';
 
   private fields =
-    'name,flags,population,capital,translations,currencies,region,subregion,languages';
+    'name,flags,population,capital,translations,region,languages';
 
   constructor(private http: HttpClient) {}
 
