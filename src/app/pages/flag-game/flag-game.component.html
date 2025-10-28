@@ -12,17 +12,24 @@
     </p>
   </div>
 
-  <div class="flag-container mb-4">
-    <img
-      [src]="currentCountry?.flags?.svg"
-      [alt]="currentCountry?.flags?.alt || currentCountry?.name?.common || ''"
-      [class.correct-answer]="
-        feedbackVisible && selectedOption && isCorrectAnswer(selectedOption)
-      "
-      [class.wrong-answer]="
-        feedbackVisible && selectedOption && !isCorrectAnswer(selectedOption)
-      "
-    />
+  <div
+    class="flag-container mb-4 p-3 bg-white border border-secondary rounded mx-auto"
+    style="max-width: 400px"
+  >
+    <div class="bg-body-secondary border">
+      <img
+        [src]="currentCountry?.flags?.svg"
+        [alt]="currentCountry?.flags?.alt || currentCountry?.name?.common || ''"
+        class="d-block mx-auto"
+        style="width: 100%"
+        [class.correct-answer]="
+          feedbackVisible && selectedOption && isCorrectAnswer(selectedOption)
+        "
+        [class.wrong-answer]="
+          feedbackVisible && selectedOption && !isCorrectAnswer(selectedOption)
+        "
+      />
+    </div>
   </div>
 
   <div class="options-container">
