@@ -16,9 +16,9 @@ export class CountryService {
     return this.http.get<any[]>(`${this.apiUrl}/all?fields=${this.fields}`);
   }
 
-  getCountryByName(name: string): Observable<any[]> {
+  getCountryByTranslation(portugueseName: string): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.apiUrl}/name/${name}?fields=${this.fields}`
+      `${this.apiUrl}/translation/${portugueseName}?fields=${this.fields}`
     );
   }
 }

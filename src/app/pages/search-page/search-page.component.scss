@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 200px);
+  padding-bottom: 60px;
+}
+
+.card img {
+  max-height: 200px;
+  object-fit: cover;
+}

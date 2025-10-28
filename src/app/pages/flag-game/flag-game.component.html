@@ -1,0 +1,55 @@
+<h1 class="mb-4">Jogo das Bandeiras</h1>
+
+<div *ngIf="isLoading" class="text-center">
+  <p>Carregando jogo...</p>
+</div>
+
+<div *ngIf="!isLoading && currentCountry" class="game-container text-center">
+  <h2 class="h4">Qual país é este?</h2>
+  <div class="flag-container my-4">
+    <img [src]="currentCountry.flags.svg" [alt]="currentCountry.flags.alt" />
+  </div>
+
+  <div class="input-group mb-3 mx-auto" style="max-width: 400px">
+    <mat-form-field class="w-100">
+      <mat-label>Digite o nome do país em português...</mat-label>
+      <input
+        type="text"
+        matInput
+        [formControl]="userGuessControl"
+        [matAutocomplete]="auto"
+        (keyup.enter)="checkAnswer()"
+        [disabled]="feedbackMessage !== ''"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button
+      class="btn btn-primary ms-2"
+      type="button"
+      (click)="checkAnswer()"
+      [disabled]="feedbackMessage !== ''"
+    >
+      Verificar
+    </button>
+  </div>
+
+  <div *ngIf="feedbackMessage" class="mt-3">
+    <div
+      class="alert"
+      [ngClass]="isAnswerCorrect ? 'alert-success' : 'alert-danger'"
+    >
+      {{ feedbackMessage }}
+    </div>
+
+    <button class="btn btn-dark" (click)="startNewRound()">
+      Próxima Bandeira
+    </button>
+  </div>
+</div>
