@@ -44,10 +44,12 @@
           <div class="card-body">
             <h5 class="card-title">{{ country.translations.por.common }}</h5>
             <p class="card-text">
-              <strong>População:</strong> {{ country.population | number }}
+              <i class="fas fa-users text-muted me-2"></i
+              ><strong>População:</strong> {{ country.population | number }}
             </p>
             <p class="card-text">
-              <strong>Capital:</strong>
+              <i class="fas fa-star text-muted me-2"></i
+              ><strong>Capital:</strong>
               {{ country.capital ? country.capital[0] : "N/A" }}
             </p>
           </div>

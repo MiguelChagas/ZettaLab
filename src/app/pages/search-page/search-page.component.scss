@@ -14,8 +14,9 @@
   }
 
   .card-img-top {
-    height: 160px;
-    object-fit: contain;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
     padding: 1rem;
     background-color: #f8f9fa;
     border-bottom: 1px solid #dee2e6;
