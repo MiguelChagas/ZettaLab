@@ -3,6 +3,12 @@
 .main-footer {
   background-color: $primary-color;
   color: #ffffff;
-  padding: 20px 0;
+  padding: 20px;
+  width: 100vw;
   margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
 }

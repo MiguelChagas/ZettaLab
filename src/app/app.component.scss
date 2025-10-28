@@ -1,20 +1,38 @@
-.container-fluid {
-  min-height: 100vh;
+.app-container {
   display: flex;
-  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.row {
+.sidebar-container {
+  width: 250px;
+  min-width: 250px;
+  position: fixed;
+  height: 100vh;
+  z-index: 2;
+}
+
+.content-container {
   flex: 1;
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 250px);
+  padding-bottom: 60px; /* altura do footer */
 }
 
 main {
   flex: 1;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 60px); // altura total menos altura do footer
 }
 
 .card {
   flex: 1;
+  margin-bottom: 1rem;
 }

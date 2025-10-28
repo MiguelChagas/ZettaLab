@@ -1,18 +1,15 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3 col-lg-2 p-0">
-      <app-sidebar></app-sidebar>
-    </div>
-
-    <div class="col-md-9 offset-md-3 col-lg-10 offset-lg-2">
-      <main>
-        <div class="card shadow-sm border-0">
-          <div class="card-body">
-            <router-outlet></router-outlet>
-          </div>
+<div class="app-container">
+  <div class="sidebar-container">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="content-container">
+    <main>
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <router-outlet></router-outlet>
         </div>
-      </main>
-      <app-footer></app-footer>
-    </div>
+      </div>
+    </main>
+    <app-footer></app-footer>
   </div>
 </div>

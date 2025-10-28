@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CountryService } from '../../services/country.service';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-page',
@@ -10,15 +12,36 @@ import { CountryService } from '../../services/country.service';
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
 })
-export class SearchPageComponent {
+export class SearchPageComponent implements OnDestroy {
   countries: any[] = [];
   isLoading: boolean = false;
   errorMessage: string | null = null;
   hasSearched: boolean = false;
+  private searchTerms = new Subject<string>();
+  private destroy$ = new Subject<void>();
 
-  constructor(private countryService: CountryService) {}
+  constructor(private countryService: CountryService) {
+    this.setupSearch();
+  }
+
+  private setupSearch(): void {
+    this.searchTerms
+      .pipe(takeUntil(this.destroy$), debounceTime(300), distinctUntilChanged())
+      .subscribe((term) => {
+        this.performSearch(term);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   searchCountries(searchTerm: string): void {
+    this.searchTerms.next(searchTerm);
+  }
+
+  private performSearch(searchTerm: string): void {
     this.isLoading = true;
     this.errorMessage = null;
     this.countries = [];
