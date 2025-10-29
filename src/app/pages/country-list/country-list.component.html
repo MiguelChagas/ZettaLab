@@ -7,6 +7,7 @@
 </div>
 
 <div *ngIf="!isLoading && !errorMessage" class="row">
+  <!-- *ngFor: diretiva Angular que itera sobre o array de países -->
   <div *ngFor="let country of countries" class="col-12 col-md-4 col-lg-3 mb-4">
     <a
       [routerLink]="['/pais', country.translations.por.common]"
@@ -20,6 +21,7 @@
         />
         <div class="card-body">
           <h5 class="card-title">{{ country.translations.por.common }}</h5>
+          <!-- Informação de população com formatação numérica usando pipe -->
           <p class="card-text">
             <i class="fas fa-users text-muted me-2"></i
             ><strong>População:</strong> {{ country.population | number }}

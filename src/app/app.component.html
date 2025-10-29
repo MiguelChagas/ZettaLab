@@ -1,11 +1,16 @@
+<!-- Container principal da aplicação com layout de sidebar + conteúdo -->
 <div class="app-container">
+  <!-- Sidebar fixa à esquerda -->
   <div class="sidebar-container">
     <app-sidebar></app-sidebar>
   </div>
+  <!-- Container do conteúdo principal e footer -->
   <div class="content-container">
     <main>
+      <!-- Card wrapper para o conteúdo das rotas -->
       <div class="card shadow-sm border-0">
         <div class="card-body">
+          <!-- router-outlet: placeholder onde os componentes das rotas são renderizados -->
           <router-outlet></router-outlet>
         </div>
       </div>

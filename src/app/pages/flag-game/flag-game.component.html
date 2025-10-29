@@ -1,17 +1,22 @@
 <h1 class="mb-4">Jogo das Bandeiras</h1>
 
+<!-- Indicador de carregamento inicial do jogo -->
 <div *ngIf="isLoading" class="text-center">
   <p>Carregando jogo...</p>
 </div>
 
+<!-- Container principal do jogo (visível enquanto o jogo está ativo) -->
 <div *ngIf="!isLoading && !gameOver" class="game-container">
+  <!-- Cabeçalho com informações da rodada e timer -->
   <div class="text-center mb-3">
     <h2 class="h4">Rodada {{ currentRound }} de {{ totalRounds }}</h2>
+    <!-- Timer com classe condicional para alerta quando tempo está acabando -->
     <p class="timer" [ngClass]="{ 'timer-warning': timeLeft <= 3 }">
       Tempo Restante: {{ timeLeft }}s
     </p>
   </div>
 
+  <!-- Container da bandeira com feedback visual de acerto/erro -->
   <div
     class="flag-container mb-4 p-3 bg-white border border-secondary rounded mx-auto"
     style="max-width: 400px"
@@ -32,6 +37,7 @@
     </div>
   </div>
 
+  <!-- Lista de opções (5 países para escolher) -->
   <div class="options-container">
     <button
       *ngFor="let option of options"
@@ -48,9 +54,11 @@
   </div>
 </div>
 
+<!-- Tela de fim de jogo com pontuação -->
 <div *ngIf="gameOver" class="game-over text-center">
   <h2>Fim de Jogo!</h2>
   <p class="score">Você acertou {{ score }} de {{ totalRounds }} bandeiras!</p>
+  <!-- Cálculo da porcentagem de acertos usando pipe number -->
   <p class="percentage">
     Taxa de acerto: {{ (score / totalRounds) * 100 | number : "1.0-0" }}%
   </p>

@@ -1,19 +1,24 @@
+// Estilização dos cards de países com efeito hover
 .card-link {
   text-decoration: none;
   color: inherit;
   display: block;
 
   .card {
+    // Transições suaves para animações de hover
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
+    // Efeito de zoom e sombra ao passar o mouse
     &:hover {
       transform: scale(1.03);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
+
+    // Padronização da altura e ajuste da bandeira no card
     .card-img-top {
       height: 150px;
-      object-fit: cover;
-      object-position: center;
+      object-fit: cover; // Mantém proporção da imagem sem distorcer
+      object-position: center; // Centraliza a imagem
     }
   }
 }

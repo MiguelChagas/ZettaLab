@@ -1,30 +1,34 @@
+// Container principal usando flexbox para layout sidebar + conteúdo
 .app-container {
   display: flex;
   min-height: 100vh;
   width: 100%;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: hidden; // Previne scroll horizontal
 }
 
+// Sidebar fixa à esquerda com largura definida
 .sidebar-container {
   width: 250px;
   min-width: 250px;
   position: fixed;
   height: 100vh;
-  z-index: 2;
+  z-index: 2; // Garante que sidebar fique sobre o conteúdo
 }
 
+// Container do conteúdo ajustado para não sobrepor a sidebar
 .content-container {
   flex: 1;
-  margin-left: 250px;
+  margin-left: 250px; // Espaço para a sidebar fixa
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 1;
-  width: calc(100% - 250px);
-  padding-bottom: 60px; /* altura do footer */
+  width: calc(100% - 250px); // Largura calculada descontando sidebar
+  padding-bottom: 60px; // Espaço para o footer fixo
 }
 
+// Área principal que cresce para ocupar espaço disponível
 main {
   flex: 1;
   padding: 1rem;
@@ -32,6 +36,7 @@ main {
   flex-direction: column;
 }
 
+// Card que envolve o conteúdo das rotas
 .card {
   flex: 1;
   margin-bottom: 1rem;

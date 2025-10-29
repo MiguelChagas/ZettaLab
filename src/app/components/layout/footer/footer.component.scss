@@ -1,5 +1,7 @@
+// Importa variáveis globais de estilo do projeto
 @use "../../../variables" as *;
 
+// Estilização do rodapé fixo na parte inferior da página
 .main-footer {
   background-color: $primary-color;
   color: #ffffff;

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CountryListComponent } from './country-list.component';
 
+// Arquivo de testes unitários do CountryListComponent
+// Verifica se o componente é criado corretamente
 describe('CountryListComponent', () => {
   let component: CountryListComponent;
   let fixture: ComponentFixture<CountryListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CountryListComponent]
-    })
-    .compileComponents();
+      imports: [CountryListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CountryListComponent);
     component = fixture.componentInstance;

@@ -1,6 +1,6 @@
 <div class="search-container">
   <h1 class="mb-4">Pesquisar País</h1>
-
+  <!-- Campo de busca com referência de template (#searchInput) -->
   <div class="input-group mb-4">
     <input
       #searchInput
@@ -17,11 +17,11 @@
       português.
     </p>
   </div>
-
+  <!-- Grid de resultados da busca -->
   <div *ngIf="isLoading" class="text-center">
     <p>Buscando...</p>
   </div>
-
+  <!-- Mensagem de erro (país não encontrado ou erro na API) -->
   <div *ngIf="errorMessage" class="alert alert-warning text-center">
     {{ errorMessage }}
   </div>

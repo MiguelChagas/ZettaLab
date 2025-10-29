@@ -1,18 +1,22 @@
+// Define altura mínima da página e padding inferior
 :host {
   display: block;
   min-height: calc(100vh - 200px);
   padding-bottom: 60px;
 }
 
+// Estilização dos cards de resultado com efeito hover
 .card {
   transition: all 0.3s ease;
   border: 1px solid #dee2e6;
 
+  // Efeito de elevação ao passar o mouse
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
+  // Padronização da bandeira no card
   .card-img-top {
     height: 150px;
     object-fit: cover;
@@ -23,6 +27,7 @@
   }
 }
 
+// Remove sublinhado dos links
 a {
   color: inherit;
 

@@ -1,21 +1,27 @@
+<!-- Menu lateral de navegação da aplicação -->
 <div class="sidebar-container d-flex flex-column">
+  <!-- Logo/título da aplicação com link para página de países -->
   <a class="sidebar-brand" routerLink="/paises"
     ><i class="fas fa-globe-americas me-2"></i> Atlas Mundial
   </a>
 
+  <!-- Lista de links de navegação -->
   <ul class="nav flex-column">
+    <!-- Link para página principal de países -->
     <li class="nav-item">
       <a class="nav-link" routerLink="/paises" routerLinkActive="active"
         ><i class="fas fa-map-marked-alt fa-fw me-2"></i>
         Página Principal
       </a>
     </li>
+    <!-- Link para jogo de bandeiras -->
     <li class="nav-item">
       <a class="nav-link" routerLink="/jogo-bandeiras" routerLinkActive="active"
         ><i class="fas fa-flag fa-fw me-2"></i>
         Jogo das Bandeiras
       </a>
     </li>
+    <!-- Link para página de pesquisa -->
     <li class="nav-item">
       <a class="nav-link" routerLink="/pesquisar" routerLinkActive="active"
         ><i class="fas fa-search fa-fw me-2"></i>

@@ -1,12 +1,16 @@
+<!-- Indicador de carregamento exibido enquanto busca dados do país -->
 <div *ngIf="isLoading" class="text-center">
   <p>Carregando dados do país...</p>
 </div>
 
+<!-- Mensagem de erro caso a requisição falhe -->
 <div *ngIf="errorMessage" class="alert alert-danger">
   {{ errorMessage }}
 </div>
 
+<!-- Conteúdo principal exibido após carregar os dados com sucesso -->
 <div *ngIf="country && !isLoading">
+  <!-- Seção do cabeçalho com bandeira e nomes do país -->
   <div class="text-center mb-4">
     <img
       [src]="country.flags.svg"
@@ -18,7 +22,9 @@
     <h2 class="h5 text-muted">{{ country.name.official }}</h2>
   </div>
 
+  <!-- Grid de cards com informações estatísticas do país -->
   <div class="row g-3 justify-content-center">
+    <!-- Card de população -->
     <div class="col-md-6 col-lg-4">
       <div class="stat-card bg-light border border-secondary rounded p-4 h-100">
         <i class="fas fa-users fa-2x text-primary"></i>
@@ -29,6 +35,7 @@
       </div>
     </div>
 
+    <!-- Card de capital -->
     <div class="col-md-6 col-lg-4">
       <div class="stat-card bg-light border border-secondary rounded p-4 h-100">
         <i class="fas fa-star fa-2x text-primary"></i>
@@ -41,6 +48,7 @@
       </div>
     </div>
 
+    <!-- Card de línguas -->
     <div class="col-md-6 col-lg-4">
       <div class="stat-card bg-light border border-secondary rounded p-4 h-100">
         <i class="fas fa-language fa-2x text-primary"></i>
@@ -51,6 +59,7 @@
       </div>
     </div>
 
+    <!-- Card de continente -->
     <div class="col-md-6 col-lg-4">
       <div class="stat-card bg-light border border-secondary rounded p-4 h-100">
         <i class="fas fa-map-marker-alt fa-2x text-primary"></i>

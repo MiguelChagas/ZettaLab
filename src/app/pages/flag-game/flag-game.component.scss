@@ -1,3 +1,4 @@
+// Container da bandeira com feedback visual
 .flag-container {
   display: flex;
   justify-content: center;
@@ -12,11 +13,13 @@
     background-color: #f8f9fa;
     border: 2px solid transparent;
 
+    // Destaque verde quando resposta correta
     &.correct-answer {
       border-color: #28a745;
       background-color: rgba(40, 167, 69, 0.1);
     }
 
+    // Destaque vermelho quando resposta errada
     &.wrong-answer {
       border-color: #dc3545;
       background-color: rgba(220, 53, 69, 0.1);
@@ -24,12 +27,14 @@
   }
 }
 
+// Container principal do jogo
 .game-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 }
 
+// Container dos botões de opções
 .options-container {
   display: flex;
   flex-direction: column;
@@ -41,32 +46,38 @@
     padding: 15px;
     transition: all 0.3s ease;
 
+    // Efeito de elevação ao passar o mouse
     &:hover:not([disabled]) {
       transform: translateY(-2px);
     }
 
+    // Animação para resposta correta
     &.btn-success {
       animation: pulse-green 0.5s;
     }
 
+    // Animação para resposta errada
     &.btn-danger {
       animation: pulse-red 0.5s;
     }
   }
 }
 
+// Estilização do timer com alerta visual
 .timer {
   font-size: 1.2rem;
   font-weight: bold;
   color: #2196f3;
   margin: 10px 0;
 
+  // Alerta piscante quando tempo está acabando
   &.timer-warning {
     color: #dc3545;
     animation: pulse 1s infinite;
   }
 }
 
+// Tela de fim de jogo
 .game-over {
   padding: 30px;
   background-color: #f8f9fa;
@@ -88,6 +99,7 @@
   }
 }
 
+// Animação de pulsação para o timer
 @keyframes pulse {
   0% {
     opacity: 1;
@@ -100,6 +112,7 @@
   }
 }
 
+// Animação de escala para resposta correta
 @keyframes pulse-green {
   0% {
     transform: scale(1);
@@ -112,6 +125,7 @@
   }
 }
 
+// Animação de escala para resposta errada
 @keyframes pulse-red {
   0% {
     transform: scale(1);

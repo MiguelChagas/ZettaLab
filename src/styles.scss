@@ -1,8 +1,11 @@
+// Importa variáveis globais definidas no arquivo variables.scss
 @use "app/variables" as *;
 
+// Definição de famílias de fontes
 $font-headings: "Merriweather", serif;
 $font-body: "Roboto", sans-serif;
 
+// Estilos globais da aplicação
 body {
   background-color: $background-color;
   color: $text-color;
@@ -10,6 +13,7 @@ body {
   font-family: $font-body;
 }
 
+// Todos os títulos usam a fonte Merriweather
 h1,
 h2,
 h3,
