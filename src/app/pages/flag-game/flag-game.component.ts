@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CountryService } from '../../services/country.service';
+import { PLATFORM_ID } from '@angular/core';
 import { Subject, interval, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -46,16 +47,22 @@ export class FlagGameComponent implements OnInit, OnDestroy {
   selectedOption: Country | null = null;
   feedbackVisible = false;
   timerSubscription?: Subscription;
+  isBrowser = false;
   // Subject: usado para cancelar observables quando componente é destruído
   private destroy$ = new Subject<void>();
 
-  constructor(private countryService: CountryService) {}
+  constructor(
+    private countryService: CountryService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   // OnInit: carrega todos os países ao iniciar o componente
   ngOnInit(): void {
     this.countryService.getAllCountries().subscribe((data) => {
       this.allCountries = data;
-      this.startNewRound();
+      this.prepareRoundWithoutTimers();
       this.isLoading = false;
     });
   }
@@ -82,7 +89,23 @@ export class FlagGameComponent implements OnInit, OnDestroy {
     this.timeLeft = 10;
     this.currentCountry = this.getRandomCountry();
     this.options = this.generateOptions();
-    this.startTimer();
+    if (this.isBrowser) {
+      this.startTimer();
+    }
+  }
+
+  private prepareRoundWithoutTimers(): void {
+    this.currentRound++;
+    if (this.currentRound > this.totalRounds) {
+      this.gameOver = true;
+      return;
+    }
+
+    this.selectedOption = null;
+    this.feedbackVisible = false;
+    this.timeLeft = 10;
+    this.currentCountry = this.getRandomCountry();
+    this.options = this.generateOptions();
   }
 
   // Retorna um país aleatório da lista
@@ -124,8 +147,6 @@ export class FlagGameComponent implements OnInit, OnDestroy {
       this.timerSubscription.unsubscribe();
     }
 
-    // interval: emite valores a cada 1000ms (1 segundo)
-    // takeUntil: cancela o observable quando destroy$ emite
     this.timerSubscription = interval(1000)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
@@ -156,10 +177,13 @@ export class FlagGameComponent implements OnInit, OnDestroy {
       this.score++;
     }
 
-    // Aguarda 2 segundos para mostrar feedback antes de próxima rodada
-    setTimeout(() => {
+    if (this.isBrowser) {
+      setTimeout(() => {
+        this.startNewRound();
+      }, 2000);
+    } else {
       this.startNewRound();
-    }, 2000);
+    }
   }
 
   // Reinicia o jogo do zero
