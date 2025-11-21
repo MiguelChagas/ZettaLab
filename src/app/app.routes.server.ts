@@ -1,13 +1,17 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 
-/**
- * Configuração de rotas para SSR (Server-Side Rendering)
- * Define que todas as rotas ('**') devem ser pré-renderizadas no servidor
- * RenderMode.Prerender: gera HTML estático durante o build para melhor performance
- */
 export const serverRoutes: ServerRoute[] = [
   {
+    // Para a rota dinâmica de detalhes do país
+    path: 'pais/:nome',
+    // Usamos RenderMode.Client para que o navegador busque os dados na hora.
+    // Isso evita o erro de build pois o Angular para de tentar "adivinhar" os países.
+    renderMode: RenderMode.Client,
+  },
+  {
+    // Para todas as outras rotas (Home, Lista, Jogo, etc.)
     path: '**',
+    // Mantemos o Prerender (Geração Estática) para máxima velocidade
     renderMode: RenderMode.Prerender,
   },
 ];
