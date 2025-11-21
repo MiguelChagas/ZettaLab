@@ -14,7 +14,6 @@ Aplicação educativa desenvolvida com Angular que consome a API REST Countries 
 - [Pré-requisitos](#-pré-requisitos)
 - [Instalação e Configuração](#-instalação-e-configuração)
 - [Como Executar](#-como-executar)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
 - [API Integrada](#-api-integrada)
 
 ---
@@ -176,55 +175,7 @@ ng test
 
 ---
 
-## 📂 Estrutura do Projeto
-
-```
-
-ZettaLab/
-│
-├── src/
-│ ├── app/
-│ │ ├── components/ # Componentes de layout
-│ │ │ └── layout/
-│ │ │ ├── footer/ # Rodapé da aplicação
-│ │ │ └── sidebar/ # Menu lateral de navegação
-│ │ │
-│ │ ├── pages/ # Páginas principais
-│ │ │ ├── country-list/ # Listagem de todos os países
-│ │ │ ├── country-detail/ # Detalhes de um país específico
-│ │ │ ├── search-page/ # Página de busca com filtros
-│ │ │ └── flag-game/ # Jogo de adivinhação de bandeiras
-│ │ │
-│ │ ├── services/ # Serviços (API calls)
-│ │ │ ├── country.service.ts # Consumo da API REST Countries
-│ │ │ └── country.service.spec.ts # Testes do serviço
-│ │ │
-│ │ ├── app.component.ts # Componente raiz
-│ │ ├── app.component.html # Template principal
-│ │ ├── app.component.scss # Estilos do layout principal
-│ │ ├── app.component.spec.ts # Testes do componente raiz
-│ │ ├── app.routes.ts # Configuração de rotas (client)
-│ │ ├── app.routes.server.ts # Configuração de rotas SSR
-│ │ ├── app.config.ts # Configuração da aplicação (client)
-│ │ ├── app.config.server.ts # Configuração SSR
-│ │ └── variables.scss # Variáveis globais de estilo
-│ │
-│ ├── index.html # HTML principal
-│ ├── main.ts # Entry point (client-side)
-│ ├── main.server.ts # Entry point (SSR)
-│ ├── styles.scss # Estilos globais
-│ └── server.ts # Servidor Express para SSR
-│
-├── angular.json # Configuração do Angular
-├── package.json # Dependências do projeto
-├── tsconfig.json # Configuração TypeScript
-├── tsconfig.app.json # Config TS para aplicação
-├── tsconfig.spec.json # Config TS para testes
-└── README.md # Este arquivo
-
 ````
-
----
 
 ## 🌐 API Integrada
 
