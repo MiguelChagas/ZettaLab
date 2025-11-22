@@ -1,32 +1,85 @@
-<!-- Menu lateral de navegação da aplicação -->
-<div class="sidebar-container d-flex flex-column">
-  <!-- Logo/título da aplicação com link para página de países -->
-  <a class="sidebar-brand" routerLink="/paises"
-    ><i class="fas fa-globe-americas me-2"></i> Atlas Mundial
-  </a>
+<!-- Menu lateral de navegação da aplicação (mais responsivo e com ícones SVG) -->
+<div class="sidebar-inner d-flex flex-column">
+  <div class="sidebar-top d-flex align-items-center justify-content-between">
+    <a class="sidebar-brand" routerLink="/paises">
+      <!-- globe icon -->
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden
+      >
+        <circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.5" />
+        <path
+          d="M2 12h20"
+          stroke="#fff"
+          stroke-width="1"
+          stroke-linecap="round"
+        />
+      </svg>
+      <span class="brand-text">Atlas Mundial</span>
+    </a>
+    <!-- close button (visible only on small screens) -->
+    <button class="close-btn d-md-none" aria-label="Fechar menu">×</button>
+  </div>
 
-  <!-- Lista de links de navegação -->
-  <ul class="nav flex-column">
-    <!-- Link para página principal de países -->
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/paises" routerLinkActive="active"
-        ><i class="fas fa-map-marked-alt fa-fw me-2"></i>
-        Página Principal
-      </a>
-    </li>
-    <!-- Link para jogo de bandeiras -->
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/jogo-bandeiras" routerLinkActive="active"
-        ><i class="fas fa-flag fa-fw me-2"></i>
-        Jogo das Bandeiras
-      </a>
-    </li>
-    <!-- Link para página de pesquisa -->
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/pesquisar" routerLinkActive="active"
-        ><i class="fas fa-search fa-fw me-2"></i>
-        Pesquisar
-      </a>
-    </li>
-  </ul>
+  <nav class="nav flex-column mt-3">
+    <a
+      class="nav-link d-flex align-items-center"
+      routerLink="/paises"
+      routerLinkActive="active"
+    >
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden>
+        <path
+          d="M3 12h18M3 6h18M3 18h18"
+          stroke="#fff"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          fill="none"
+        />
+      </svg>
+      <span>Página Principal</span>
+    </a>
+
+    <a
+      class="nav-link d-flex align-items-center"
+      routerLink="/jogo-bandeiras"
+      routerLinkActive="active"
+    >
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden>
+        <path d="M4 6h10l1 2-1 2H4v8H2V6h2z" fill="#fff" />
+      </svg>
+      <span>Jogo das Bandeiras</span>
+    </a>
+
+    <a
+      class="nav-link d-flex align-items-center"
+      routerLink="/pesquisar"
+      routerLinkActive="active"
+    >
+      <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden>
+        <circle
+          cx="11"
+          cy="11"
+          r="6"
+          stroke="#fff"
+          stroke-width="1.5"
+          fill="none"
+        />
+        <path
+          d="M21 21l-4.3-4.3"
+          stroke="#fff"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+      <span>Pesquisar</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer mt-auto">
+    <small class="text-muted">Miguel Chagas Figueiredo - Lab</small>
+  </div>
 </div>

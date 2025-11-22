@@ -1,11 +1,27 @@
 <!-- Container principal da aplicação com layout de sidebar + conteúdo -->
-<div class="app-container">
+<div class="app-container" [class.sidebar-open]="isSidebarOpen">
   <!-- Sidebar fixa à esquerda -->
   <div class="sidebar-container">
     <app-sidebar></app-sidebar>
   </div>
+
+  <!-- Botão hamburger visível em telas pequenas -->
+  <button class="hamburger" aria-label="Abrir menu" (click)="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Overlay que aparece quando sidebar está aberta em mobile -->
+  <div
+    class="overlay"
+    *ngIf="isSidebarOpen"
+    (click)="closeSidebar()"
+    aria-hidden="true"
+  ></div>
+
   <!-- Container do conteúdo principal e footer -->
-  <div class="content-container">
+  <div class="content-container" (click)="isSidebarOpen && closeSidebar()">
     <main>
       <!-- Card wrapper para o conteúdo das rotas -->
       <div class="card shadow-sm border-0">

@@ -1,3 +1,6 @@
+// Importa variáveis locais
+@use "./variables" as *;
+
 // Container principal usando flexbox para layout sidebar + conteúdo
 .app-container {
   display: flex;
@@ -12,20 +15,72 @@
   width: 250px;
   min-width: 250px;
   position: fixed;
+  top: 0;
+  left: -320px; /* off-canvas by default */
   height: 100vh;
-  z-index: 2; // Garante que sidebar fique sobre o conteúdo
+  z-index: 1100; /* above content but below the hamburger */
+  transition: left 220ms ease-in-out;
+}
+
+/* When `.sidebar-open` is applied to the app container, slide the sidebar in */
+.app-container.sidebar-open .sidebar-container {
+  left: 0;
 }
 
 // Container do conteúdo ajustado para não sobrepor a sidebar
 .content-container {
   flex: 1;
-  margin-left: 250px; // Espaço para a sidebar fixa
+  margin-left: 0; /* content occupies full width by default */
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 1;
-  width: calc(100% - 250px); // Largura calculada descontando sidebar
-  padding-bottom: 60px; // Espaço para o footer fixo
+  width: 100%;
+  padding-bottom: 60px; /* Espaço para o footer fixo */
+}
+
+/* Hamburger button (visible on small screens) */
+.hamburger {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  width: 42px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  z-index: 1200; /* sit above everything so it's always clickable */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6px;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: $primary-color; /* azul do tema */
+  border-radius: 2px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1090; /* below sidebar (1100) but above content */
+}
+
+/* When sidebar is closed on small screens we remove the left margin so content
+   occupies full width */
+@media (max-width: 991.98px) {
+  .content-container {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Ensure app content doesn't shift when sidebar is toggled */
+  .app-container.sidebar-open {
+    overflow: hidden;
+  }
 }
 
 // Área principal que cresce para ocupar espaço disponível

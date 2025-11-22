@@ -1,43 +1,78 @@
 // Importa variáveis globais de estilo
 @use "../../../variables" as *;
 
-// Container principal da sidebar fixa à esquerda da tela
-.sidebar-container {
+// Estrutura interna da sidebar (usada pelo novo markup)
+.sidebar-inner {
   background-color: $primary-color;
+  color: #fff;
   height: 100vh;
-  padding: 1.5rem 1rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: inherit;
-  overflow-y: auto; // Permite scroll se o conteúdo exceder a altura
+  padding: 1.25rem;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
-// Estilo do logo/marca da aplicação
-.sidebar-brand {
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  margin-bottom: 1rem;
-}
-
-// Estilização dos links de navegação
-.nav-link {
-  color: #ffffff;
-  opacity: 0.8;
-  padding: 0.75rem 1rem;
-
-  // Efeito hover - aumenta opacidade
-  &:hover {
-    opacity: 1;
+.sidebar-top {
+  .sidebar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
   }
 
-  // Estilo do link ativo (rota atual) usando routerLinkActive
-  &.active {
-    opacity: 1;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 0.25rem;
+  .close-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
   }
 }
+
+.nav {
+  margin-top: 0.5rem;
+
+  .nav-link {
+    color: #ffffff;
+    opacity: 0.9;
+    padding: 0.6rem 0.5rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    border-radius: 0.4rem;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+      opacity: 1;
+      text-decoration: none;
+    }
+
+    &.active {
+      background-color: rgba(255, 255, 255, 0.12);
+      font-weight: 700;
+      opacity: 1;
+    }
+
+    .icon {
+      flex: 0 0 20px;
+      height: 20px;
+      display: inline-block;
+    }
+  }
+}
+
+.sidebar-footer {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+// Behavior for small screens: sidebar becomes off-canvas by default and will
+// slide in when parent `.sidebar-open` is applied to container.
+/* Off-canvas behavior is controlled by the parent `.sidebar-container` in
+   `app.component.scss`. Keeping sidebar markup simple here avoids duplicate
+   rules and conflicting transitions. */
